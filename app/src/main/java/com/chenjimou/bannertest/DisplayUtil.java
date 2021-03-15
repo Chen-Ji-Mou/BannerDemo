@@ -3,25 +3,24 @@ package com.chenjimou.bannertest;
 import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 public class DisplayUtil {
 
     private Context mContext;
-    private Activity mActivity;
 
     private static volatile DisplayUtil instance;
     private static volatile DisplayMetrics dm = null;
 
-    private DisplayUtil(Context context, Activity activity){
+    private DisplayUtil(Context context){
         mContext = context;
-        mActivity = activity;
     }
 
-    public static void init(Context context, Activity activity){
+    public static void init(Context context){
         if (instance == null){
             synchronized (DisplayUtil.class){
                 if (instance == null){
-                    instance = new DisplayUtil(context, activity);
+                    instance = new DisplayUtil(context);
                 }
             }
         }
@@ -35,28 +34,16 @@ public class DisplayUtil {
      * 获取屏幕宽度
      */
     public int getScreenWidth() {
-        if (mActivity == null) {
-            return 0;
-        }
-        if (dm == null) {
-            dm = new DisplayMetrics();
-        }
-        mActivity.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        return dm.widthPixels;
+        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        return wm.getDefaultDisplay().getWidth();
     }
 
     /**
      * 获取屏幕高度
      */
     public int getScreenHeight() {
-        if (mActivity == null) {
-            return 0;
-        }
-        if (dm == null) {
-            dm = new DisplayMetrics();
-        }
-        mActivity.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        return dm.heightPixels;
+        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        return wm.getDefaultDisplay().getHeight();
     }
 
     /**

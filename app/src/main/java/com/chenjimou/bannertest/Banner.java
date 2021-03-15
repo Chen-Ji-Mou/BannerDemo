@@ -1,10 +1,8 @@
 package com.chenjimou.bannertest;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +30,7 @@ public class Banner extends FrameLayout implements ViewPager.OnPageChangeListene
     // 记录指示器当前"点"的位置
     private int indicatorPosition = 0;
 
-    private MyViewPager viewPager;
+    private BannerViewPager viewPager;
     private LinearLayout indicator;
     private Handler mHandler;
     private AutoRollTimer mAutoRollTimer;
