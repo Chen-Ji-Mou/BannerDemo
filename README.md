@@ -1,2 +1,2 @@
-# BannerTest
+# BannerDemo
 一个用于展示自定义Banner的demo，自定义Banner使用了ViewPager进行实现
